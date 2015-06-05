@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title>Password</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-		<link href="css/style_sp.css" rel="stylesheet">
+		<link href="./css/style_sp.css" rel="stylesheet">
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/md5.js"></script>
 		<script type="text/javascript">
@@ -31,7 +31,7 @@
 					if (isNaN(code1)) {
 						var code16 = code32.slice(0, 16);
 					} else {
-						var code16 = "K" + code32.slice(1, 16);
+						var code16 = code32.slice(1, 16) + "N";
 					}
 					$("#code16").text(code16);
 					document.getElementById('code16').value = code16; 
