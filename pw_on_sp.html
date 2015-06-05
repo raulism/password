@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Flowerpassword</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link href="css/style_sp.css" rel="stylesheet">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript">
+			function countCode() {
+				var password = $("#password").val();
+				var key = $("#key").val();
+				if (password && key) {
+					var md5one = $.md5(password, key);
+					var md5two = $.md5(md5one, 'snow');
+					var md5three = $.md5(md5one, 'kise');
+					var rule = md5three.split("");
+					var source = md5two.split("");
+					for (var i = 0; i <= 31; i++) {
+						if (isNaN(source[i])) {
+							str = "sunlovesnow1990090127xykab";
+							if (str.search(rule[i]) > -1) {
+								source[i] = source[i].toUpperCase();
+							}
+						}
+					}
+					var code32 = source.join("");
+					var code1 = code32.slice(0, 1);
+					if (isNaN(code1)) {
+						var code16 = code32.slice(0, 16);
+					} else {
+						var code16 = "K" + code32.slice(1, 16);
+					}
+					$("#code16").text(code16);
+					document.getElementById('code16').value = code16; 
+				}
+			}
+
+			$(function() {
+				$('#password').change(countCode);
+				$('#key').change(countCode);
+				$('#password').keyup(countCode);
+				$('#key').keyup(countCode);
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<form class="form-login">
+				<div class="header">
+				</div>
+				<div class="inputs">
+					<input id="password" name="password" type="password" autofocus="autofocus" value=""/>
+					<input id="key" name="key" type="text" value="">
+				</div>
+				<div class="button-login">
+					<input type="text" id="code16" name="code16d" readonly="readonly">
+				</div>
+				<div class="footer-login">
+					<ul class="social-links">
+					</ul>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
