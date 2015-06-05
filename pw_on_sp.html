@@ -14,13 +14,13 @@
 				var key = $("#key").val();
 				if (password && key) {
 					var md5one = $.md5(password, key);
-					var md5two = $.md5(md5one, 'snow');
-					var md5three = $.md5(md5one, 'kise');
+					var md5two = $.md5(md5one, 'raulism');
+					var md5three = $.md5(md5one, 'koniliu');
 					var rule = md5three.split("");
 					var source = md5two.split("");
 					for (var i = 0; i <= 31; i++) {
 						if (isNaN(source[i])) {
-							str = "sunlovesnow1990090127xykab";
+							str = "raulismlovekoniliuatNanjing20140302";
 							if (str.search(rule[i]) > -1) {
 								source[i] = source[i].toUpperCase();
 							}
