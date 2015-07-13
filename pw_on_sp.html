@@ -37,7 +37,6 @@
 					document.getElementById('code16').value = code16; 
 				}
 			}
-
 			$(function() {
 				$('#password').change(countCode);
 				$('#key').change(countCode);
@@ -45,6 +44,12 @@
 				$('#key').keyup(countCode);
 			});
 			
+  			$(document).ready(function(){  
+				$("#copyPassword").bind("click",
+					function() {
+						$('#code16').select();
+                });
+  			});	
 		</script>
 	</head>
 	<body>
@@ -54,6 +59,7 @@
 					<input id="password" name="password" type="password" autofocus="autofocus" value="" style="color:#00DD00;border:2px solid;"/>
 					<input id="key" name="key" type="text" value="" style="border:2px solid;color:#00DD00" >
 					<input id="code16" name="code16d" type="text" readonly="readonly" style="border:2px solid;color:#BB5500">
+					<button type="button" class="button" id="copyPassword">复制密码</button>
 				</div>
 			</form>
 		</div>
