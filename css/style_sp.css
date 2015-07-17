@@ -9,7 +9,7 @@ input:focus, a:focus {
 }
 /* General Section */
 body {
-	background: #232323;
+	background: #005b7f;
 	margin: 0;
 	font-size: 14px;
 	line-height: 18px;
@@ -23,7 +23,7 @@ body {
 .inputs input[type="text"], .inputs [type="password"]{
 	width: 80%;
 	height: 60px;
-	background: #1b1b1b;
+	background: #005b7f;
 	color: #00DD00;
 	font-size: 25px;
 	margin-top: 15px;
