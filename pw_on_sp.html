@@ -25,20 +25,22 @@
 				$('#password').keyup(countCode);
 				$('#key').keyup(countCode);
 			});
-			$(document).ready(function(){  
-				$("#copyPassword").bind("click",
-					function() {
-						$('#code16').select();
-                });
-  			});	
+			$(document).ready(function(){
+				document.getElementById('copyPassword').addEventListener('touchstart',touchEnd,false);
+				function touchEnd(event){
+					console.log($('#code16').select());
+					$('#code16').focus();
+					$('#code16').select();
+				}
+			});	
 		</script>
 	</head>
 <body>
 <form id="loginform">
 <input id="password" type="password" class="input" placeholder="Originnal password" />
 <input id="key" "type="text" class="input" placeholder="Distinguishing code" /> 
-<input id="code16" "type="text" class="input" readonly="true" value="" placeholder="Final password" style="color:#BB5500" /> 
-<input id="copyPassword" type="button" class="loginbutton" value="Copy password" />
+<input id="code16" "type="text" class="input" placeholder="Final password" style="color:#BB5500" /> 
+<input id="copyPassword" type="button" class="loginbutton" value="copy" />
 </form>
 <a href="http://raulism.gitcafe.io/password">Click here to web version</a>
 </body>
