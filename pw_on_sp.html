@@ -1,51 +1,23 @@
-<!DOCTYPE html>
+<!--A Flat Design Login Page by Codelator.com-->
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>Password</title>
 		
-		<!--Ê∑ªÂä†Âà∞ÊâãÊú∫Â±èÂπïÊó∂ÊòæÁ§∫ÁöÑÂõæÊ†á  start-->
+		<!--ÃÌº”µΩ ÷ª˙∆¡ƒª ±œ‘ æµƒÕº±Í  start-->
 		<link rel="apple-touch-icon" href="./img/me.png" /> 
 		<!--<link rel="apple-touch-startup-image" sizes="320x460" href="./img/startup.png" media="screen and (max-device-width: 320)">-->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-		<!--Ê∑ªÂä†Âà∞ÊâãÊú∫Â±èÂπïÊó∂ÊòæÁ§∫ÁöÑÂõæÊ†á  end-->
+		<!--ÃÌº”µΩ ÷ª˙∆¡ƒª ±œ‘ æµƒÕº±Í  end-->
 		
-		<link href="./css/style_sp.css" rel="stylesheet">
+		<link href="./css/style.css" rel="stylesheet">
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/md5.js"></script>
 		<script type="text/javascript">
-			function countCode() {
-				var password = $("#password").val();
-				var key = $("#key").val()+"@shixing";
-				if (password && key) {
-					var md5one = $.md5(password, key);
-					var md5two = $.md5(md5one, 'raulism');
-					var md5three = $.md5(md5one, 'koniliu');
-					var rule = md5three.split("");
-					var source = md5two.split("");
-					for (var i = 0; i <= 31; i++) {
-						if (isNaN(source[i])) {
-							str = "raulismlovekoniliuatNanjing20140302";
-							if (str.search(rule[i]) > -1) {
-								source[i] = source[i].toUpperCase();
-							}
-						}
-					}
-					var code32 = source.join("");
-					var code1 = code32.slice(0, 1);
-					if (isNaN(code1)) {
-						var code16 = code32.slice(0, 16);
-					} else {
-						var code16 = code32.slice(1, 16) + "N";
-					}
-					$("#code16").text(code16);
-					document.getElementById('code16').value = code16; 
-				}
-			}
 			$(function() {
 				$('#password').change(countCode);
 				$('#key').change(countCode);
@@ -62,19 +34,13 @@
 			//});
 		</script>
 	</head>
-	<body>
-		<div id="wrapper">
-			<form class="form-login">
-				<div class="inputs">
-					<!--<input id="password" name="password" type="password" autofocus="autofocus" value="">-->
-					<input id="password" name="password" type="password" value="">
-					<input id="key" name="key" type="text" value="">
-					<input id="code16" name="code16d" type="text" readonly="true" style="font-size:25px;color:#BB5500">
-					<!--<button type="button" class="button" id="copyPassword">Â§çÂà∂ÂØÜÁ†Å</button>-->
-				</div>
-			</form>
-		</div>
-	</body>
+<body>
+<form id="loginform" method="" action="">
+<input id="password" type="password" class="input" placeholder="Password" />
+<input id="key" "type="text" class="input" placeholder="E-mail" /> 
+<input id="code16" "type="text" class="input" value="" placeholder="E-mail" /> 
+<input type="submit" class="loginbutton" value="SIGN IN" />
+</form>
+<a href="#">Click here for new users</a>
+</body>
 </html>
-
-
