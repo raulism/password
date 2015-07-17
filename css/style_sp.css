@@ -4,40 +4,37 @@ html, body, div, span, applet, object, input, p, font, img, form{
 	margin: 0;
 	padding: 0;
 }
-input:focus, a:focus {
-	outline: none;
-}
 /* General Section */
 body {
 	background: #005b7f;
 	margin: 0;
-	font-size: 14px;
-	line-height: 18px;
-	color: #ffffff;
+	text-align:center；
 }
 /* inputs */
 .inputs {
-	margin-top: 20px;
-	color: #4d4d4d;
+	margin-top: 30px;
+	vertical-align:middle;
+	/*color: #4d4d4d;*/
 }
 .inputs input[type="text"], .inputs [type="password"]{
 	width: 80%;
 	height: 60px;
 	background: #005b7f;
 	color: #00DD00;
-	font-size: 25px;
+	font-size: 15px;
 	margin-top: 15px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	border: 0;
+	border:2px solid;
 	margin-left: 10px;
 	padding: 0px 10px;
 }
 .button {
+	background: #005b7f;
     display: block;
     height: 60px;
-    width: 90%;
+    width: 88%;
     text-decoration: none;
     font-weight: bold;
     line-height: 25px;
