@@ -46,6 +46,8 @@
 			$(document).ready(function(){
 				document.getElementById('code16').addEventListener('touchend',touchEnd,false);
 				function touchEnd(event){
+					console.log($('#code16').focus());
+					$('#code16').focus();
 					$('#code16').select();
 				}
 			});
@@ -64,3 +66,5 @@
 		</div>
 	</body>
 </html>
+
+
