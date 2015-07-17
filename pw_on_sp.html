@@ -11,7 +11,7 @@
 		<script type="text/javascript">
 			function countCode() {
 				var password = $("#password").val();
-				var key = $("#key").val();
+				var key = $("#key").val()+"@shixing";
 				if (password && key) {
 					var md5one = $.md5(password, key);
 					var md5two = $.md5(md5one, 'raulism');
