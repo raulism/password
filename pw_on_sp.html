@@ -5,18 +5,19 @@
 		<meta charset="utf-8">
 		<title>Password</title>
 		
-		<!--Ìí¼Óµ½ÊÖ»úÆÁÄ»Ê±ÏÔÊ¾µÄÍ¼±ê  start-->
+		<!--æ·»åŠ åˆ°æ‰‹æœºå±å¹•æ—¶æ˜¾ç¤ºçš„å›¾æ ‡  start-->
 		<link rel="apple-touch-icon" href="./img/me.png" /> 
 		<!--<link rel="apple-touch-startup-image" sizes="320x460" href="./img/startup.png" media="screen and (max-device-width: 320)">-->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-		<!--Ìí¼Óµ½ÊÖ»úÆÁÄ»Ê±ÏÔÊ¾µÄÍ¼±ê  end-->
+		<!--æ·»åŠ åˆ°æ‰‹æœºå±å¹•æ—¶æ˜¾ç¤ºçš„å›¾æ ‡  end-->
 		
 		<link href="./css/style.css" rel="stylesheet">
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/md5.js"></script>
+		<script src="./js/password.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$('#password').change(countCode);
@@ -24,23 +25,21 @@
 				$('#password').keyup(countCode);
 				$('#key').keyup(countCode);
 			});
-			//$(document).ready(function(){
-			//	document.getElementById('code16').addEventListener('touchend',touchEnd,false);
-			//	function touchEnd(event){
-			//		console.log($('#code16').focus());
-			//		$('#code16').focus();
-			//		$('#code16').select();
-			//	}
-			//});
+			$(document).ready(function(){  
+				$("#copyPassword").bind("click",
+					function() {
+						$('#code16').select();
+                });
+  			});	
 		</script>
 	</head>
 <body>
-<form id="loginform" method="" action="">
-<input id="password" type="password" class="input" placeholder="Password" />
-<input id="key" "type="text" class="input" placeholder="E-mail" /> 
-<input id="code16" "type="text" class="input" value="" placeholder="E-mail" /> 
-<input type="submit" class="loginbutton" value="SIGN IN" />
+<form id="loginform">
+<input id="password" type="password" class="input" placeholder="Originnal password" />
+<input id="key" "type="text" class="input" placeholder="Distinguishing code" /> 
+<input id="code16" "type="text" class="input" readonly="true" value="" placeholder="Final password" style="color:#BB5500" /> 
+<input id="copyPassword" type="button" class="loginbutton" value="Copy password" />
 </form>
-<a href="#">Click here for new users</a>
+<a href="http://raulism.gitcafe.io/password">Click here to web version</a>
 </body>
 </html>
