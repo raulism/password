@@ -16,13 +16,12 @@
 				$('#key').keyup(countCode);
 			});
 			$(function(){    
-				$.getScript("http://whois.pconline.com.cn/ipJson.jsp?callback=jsonReback");  
-			});  
-			function jsonReback(obj){
-				console.log(obj);
-				var x=document.getElementById("addr");
-				x.innerHTML="您的当前位置："+obj.pro+""+obj.city+"(IP:"+obj.ip+")";
-			} 
+				$.getJSON("http://api.map.baidu.com/location/ip?ak=huGDrrtkgteDGmZPE4EwiTNY&callback=?",function(data){ 
+					console.log(data); 
+					var x=document.getElementById("addr");
+					x.innerHTML="您的当前位置："+data.content.address;
+				}); 
+			});
 		</script>
 	</head>
 	<body>
