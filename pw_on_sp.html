@@ -25,9 +25,11 @@
 				$('#key').keyup(countCode);
 			});
 			$(document).ready(function(){
-				document.getElementById('copyPassword').addEventListener('touchstart',touchEnd,false);
-				function touchEnd(event){
-					console.log($('#code16').select());
+				document.getElementById('code16').addEventListener('touchstart',selectCode,false);
+				function selectCode(event){
+					var isFocus=$("#code16").is(":focus");  
+					console.log(isFocus);
+					//console.log($('#code16').focus);
 					$('#code16').focus();
 					$('#code16').select();
 				}
@@ -38,8 +40,8 @@
 <form id="loginform">
 <input id="password" type="password" class="input" />
 <input id="key" "type="text" class="input" /> 
-<input id="code16" "type="text" class="input" style="color:#00DD00" /> 
-<input id="copyPassword" type="button" class="loginbutton" value="copy" />
+<input id="code16" "type="text" class="loginbutton" readonly="true" style="color:#00DD00" /> 
+<!--<input id="copyPassword" type="button" class="loginbutton" value="copy" />-->
 </form>
 <a href="http://raulism.gitcafe.io">Click here to my blog</a>
 </br>
