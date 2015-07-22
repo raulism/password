@@ -31,6 +31,7 @@
 				$("#code16").focus(function(){
 					$("#code16").css("color","#FF00FF");
 					this.select();
+					this.setSelectionRange(0, 9999);
 				});
 				$("#code16").blur(function(){
 					$("#code16").css("color","#00DD00");
