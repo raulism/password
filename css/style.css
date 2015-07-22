@@ -36,7 +36,17 @@ a{
 	font-size: 18px;
 	margin-top:15px;
 }
-
+.inputFinalCode{
+	background-color:transparent;
+	border:1px #ffdd00 solid;
+	width:270px;
+    padding:15px 25px;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	border-radius: 5px;
+	color: #00DD00;
+	font-size: 18px;
+	margin-top:15px;
+}
 .loginbutton{
 	/*modified by shixing start*/
 	background-color:transparent;

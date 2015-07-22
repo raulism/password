@@ -25,24 +25,24 @@
 				$('#key').keyup(countCode);
 			});
 			$(document).ready(function(){
-				document.getElementById('code16').addEventListener('touchstart',selectCode,false);
-				function selectCode(event){
-					var isFocus=$("#code16").is(":focus");  
-					console.log(isFocus);
-					//console.log($('#code16').focus);
-					$('#code16').focus();
-					$('#code16').select();
-				}
+				$("#code16").focus(function(){
+					$("#code16").css("color","#FF00FF");
+					this.select();
+				});
+				$("#code16").blur(function(){
+					$("#code16").css("color","#00DD00");
+				});
 			});	
 		</script>
 	</head>
 <body>
 <form id="loginform">
-<input id="password" type="password" class="input" />
-<input id="key" "type="text" class="input" /> 
-<input id="code16" "type="text" class="loginbutton" readonly="true" style="color:#00DD00" /> 
+	<input id="password" type="password" class="input" />
+	<input id="key" "type="text" class="input" /> 
+	<input id="code16" "type="text" class="inputFinalCode" readonly="true" /> 
 <!--<input id="copyPassword" type="button" class="loginbutton" value="copy" />-->
 </form>
+</br></br></br></br>
 <a href="http://raulism.gitcafe.io">Click here to my blog</a>
 </br>
 <a href="sms:18013981117">Send me SMS</a>
