@@ -23,6 +23,13 @@
 				$('#key').change(countCode);
 				$('#password').keyup(countCode);
 				$('#key').keyup(countCode);
+				/*百度接口根据IP获取当前地址*/
+				$.getJSON("http://api.map.baidu.com/location/ip?ak=huGDrrtkgteDGmZPE4EwiTNY&callback=?",function(data){ 
+					console.log(data); 
+					var x=document.getElementById("addr");
+					x.innerHTML="您的当前位置："+data.content.address;
+					weather(data);
+				}); 
 			});
 			$(document).ready(function(){
 				$("#code16").focus(function(){
@@ -33,7 +40,26 @@
 				$("#code16").blur(function(){
 					$("#code16").css("color","#00DD00");
 				});
-			});	
+			});
+			/*百度天气接口*/
+			function weather(data) {
+				$.ajax({
+					url: 'http://api.map.baidu.com/telematics/v3/weather?location='+data.content.address_detail.city+'&output=json&ak=huGDrrtkgteDGmZPE4EwiTNY',
+					type: 'get',
+					dataType: 'jsonp',
+					//jsonp: 'jsoncallback',
+					xhrFields: {
+						withCredentials: true
+					},
+					crossDomain: true,
+					success: function(result) {
+						console.log(result);
+						var weather_detail = result.results[0].weather_data[0];
+						var y=document.getElementById("todayweather");
+						y.innerHTML="今日天气："+weather_detail.date+" "+weather_detail.temperature+" "+weather_detail.weather+" "+weather_detail.wind;
+					},
+				})
+			}
 		</script>
 	</head>
 <body>
@@ -47,5 +73,9 @@
 <a href="http://raulism.gitcafe.io">Click here to my blog</a>
 </br>
 <a href="sms:18013981117">Send me SMS</a>
+</br></br></br></br>
+<small id="addr" class="plug">您的当前位置：</small>
+</br>
+<small id="todayweather" class="plug">今日天气：</small>
 </body>
 </html>
