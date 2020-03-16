@@ -7,42 +7,40 @@
 		<link href="img/favicon.ico" rel="shortcut icon" />
 		<script src="js/jquery.min.js"></script>
 		<script src="js/md5.js"></script>
+		<script src="js/password.js"></script>
 		<script type="text/javascript">
-			function countCode() {
-				var password = $("#password").val();
-				var key = $("#key").val();
-				if (password && key) {
-					var md5one = $.md5(password, key);
-					var md5two = $.md5(md5one, 'raulism');
-					var md5three = $.md5(md5one, 'koniliu');
-					var rule = md5three.split("");
-					var source = md5two.split("");
-					for (var i = 0; i <= 31; i++) {
-						if (isNaN(source[i])) {
-							str = "raulismlovekoniliuatNanjing20140302";
-							if (str.search(rule[i]) > -1) {
-								source[i] = source[i].toUpperCase();
-							}
-						}
-					}
-					var code32 = source.join("");
-					var code1 = code32.slice(0, 1);
-					if (isNaN(code1)) {
-						var code16 = code32.slice(0, 16);
-					} else {
-						var code16 = code32.slice(1, 16) + "N";
-					}
-					$("#code16").text(code16);
-					document.getElementById('code16').value = code16; 
-					window.clipboardData.setData("text",code16);
-				}
-			}
 			$(function() {
 				$('#password').change(countCode);
 				$('#key').change(countCode);
 				$('#password').keyup(countCode);
 				$('#key').keyup(countCode);
+				/*百度接口根据IP获取当前地址*/
+				$.getJSON("https://api.map.baidu.com/location/ip?ak=huGDrrtkgteDGmZPE4EwiTNY&callback=?",function(data){ 
+					console.log(data); 
+					var x=document.getElementById("addr");
+					x.innerHTML="您的当前位置："+data.content.address;
+					weather(data);
+				}); 
 			});
+			/*百度天气接口*/
+			function weather(data) {
+				$.ajax({
+					url: 'https://api.map.baidu.com/telematics/v3/weather?location='+data.content.address_detail.city+'&output=json&ak=huGDrrtkgteDGmZPE4EwiTNY',
+					type: 'get',
+					dataType: 'jsonp',
+					//jsonp: 'jsoncallback',
+					xhrFields: {
+						withCredentials: true
+					},
+					crossDomain: true,
+					success: function(result) {
+						console.log(result);
+						var weather_detail = result.results[0].weather_data[0];
+						var y=document.getElementById("todayweather");
+						y.innerHTML="今日天气："+weather_detail.date+" "+weather_detail.temperature+" "+weather_detail.weather+" "+weather_detail.wind;
+					},
+				})
+			}
 		</script>
 	</head>
 	<body>
@@ -50,6 +48,9 @@
   			<p><input id="password" name="password" type="password" autofocus="autofocus" value="" style="width:300px;font-size:20pt;border:2px solid;"></p>
             <p><input id="key" name="key" type="text" value="" style="width:300px;font-size:20pt;border:2px solid;"></p>
             <p><input type="text" id="code16" name="code16d" readonly="readonly" style="width:300px;font-size:20pt;color:green;font-weight:bold;border:2px solid;"></p>
+			<p><input type="text" id="newCode16" name="newCode16" readonly="readonly" style="width:300px;font-size:20pt;color:brown;font-weight:bold;border:2px solid;"></p>
+			<small><p id="addr">您的当前位置：</p></small>
+			<small><p id="todayweather">今日天气：</p></small>
 		</form>
 	</body>
 </html>
